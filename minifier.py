@@ -3,11 +3,10 @@ import re
 import cut_blank_lines
 
 infile = 'test.py'
-cut_blank_lines.cut_blank_lines(infile)
+file = cut_blank_lines.cut_blank_lines(infile)
 
 builtin_stuff = ['print', True, False, None, 'str', 'bool']
 
-file = open(infile).read()
 parsed = ast.parse(file)
 
 def get_variable_names(tree):

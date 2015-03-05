@@ -14,15 +14,18 @@ def get_variable_names(tree):
 
     return names
 
-def get_function_names(tree):
-    names = []
+def parse_functions(tree):
+    function_names = []
+    function_params = []
     for node in tree:
         if isinstance(node, ast.FunctionDef):
-            names.append(node.name)
-    return names
+            function_names.append(node.name)
+            for arg in node.args.args:
+                function_params.append(arg.arg)
+    return function_names, function_params
 
 variables = get_variable_names(parsed.body)
-functions = get_function_names(parsed.body)
+functions, params = parse_functions(parsed.body)
 
 def get_next_char(i):
     while True:
@@ -38,5 +41,7 @@ for f in functions:
      modified_file = re.sub(f, next(char_generator), file)
 for v in variables:
     modified_file = re.sub(v, next(char_generator), modified_file)
+for p in params:
+    modified_file = re.sub(p, next(char_generator), modified_file)
 
 print(modified_file)

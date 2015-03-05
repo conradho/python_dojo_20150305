@@ -10,7 +10,6 @@ def cut_blank_lines(script_path):
             if line.strip() == '':
                 continue
             new_file_by_line.append(line)
-    print('*'*40, new_file_by_line, '*'*40)
     with open(script_path, 'w') as new_python_file:
         for line in new_file_by_line:
             new_python_file.write(line)

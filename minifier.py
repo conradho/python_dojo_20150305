@@ -1,7 +1,10 @@
 import ast
 import re
+import cut_blank_lines
 
 infile = 'test.py'
+cut_blank_lines.cut_blank_lines(infile)
+
 builtin_stuff = ['print', True, False, None, 'str', 'bool']
 
 file = open(infile).read()

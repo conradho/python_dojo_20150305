@@ -2,7 +2,7 @@ import ast
 import re
 
 infile = 'test.py'
-builtin_stuff = ['print', True, False, None]
+builtin_stuff = ['print', True, False, None, 'str', 'bool']
 
 file = open(infile).read()
 parsed = ast.parse(file)

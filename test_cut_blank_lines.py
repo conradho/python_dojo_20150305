@@ -16,6 +16,7 @@ class TestCutBlankLines(unittest.TestCase):
         self.temp_file = TempFileTuple(*tempfile.mkstemp())
         with os.fdopen(self.temp_file.file_descriptor, 'w') as opened_file:
             opened_file.write(self.sample_script)
+            opened_file.write('\n\n\n')
             # this also closes the whole file; don't need to os.close it
 
 

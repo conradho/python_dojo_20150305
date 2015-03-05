@@ -2,6 +2,7 @@ import ast
 import re
 
 infile = 'test.py'
+builtin_stuff = ['print', True, False, None]
 
 file = open(infile).read()
 parsed = ast.parse(file)
@@ -44,4 +45,9 @@ for v in variables:
 for p in params:
     modified_file = re.sub(p, next(char_generator), modified_file)
 
+for builtin in builtin_stuff:
+    char = next(char_generator)
+    line = "%s=%s;" % (char, str(builtin))
+    modified_file = re.sub(str(builtin), char, modified_file)
+    modified_file = line + modified_file
 print(modified_file)

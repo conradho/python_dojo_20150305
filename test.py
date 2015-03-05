@@ -8,3 +8,8 @@ def hello(param1):
     return something;
 
 hello(1)
+
+if something == True:
+	print(False)
+
+assert(something is not None)
